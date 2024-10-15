@@ -1,0 +1,21 @@
+.wrapper{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 0 20px;
+    margin: 0 20px;
+    &>nav{
+        grid-column: 10 / 13;
+        text-align: end;
+    }
+    .content_header{
+        width: 100%;
+        grid-column: 1 / 5;
+        .plug_text{
+            &>hr{
+                height: 3px;
+                width: 100%;
+            }
+            margin-top: 175px;
+        }
+    }
+}
