@@ -1,7 +1,11 @@
 .telegram, .comment{
+    position: fixed;
+    z-index: 10;
+    top: 600px;
     width: 70px;
     height: 70px;
     border-radius: 50%;
     border: none;
     background-color: white;
+    cursor: pointer;
 }

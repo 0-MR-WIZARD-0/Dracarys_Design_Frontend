@@ -3,19 +3,41 @@
     margin: 0;
 }
 
+@font-face {
+    font-family: "AGOptimaCyr";
+    src: 
+      local("AGOptimaCyr-Bold"),
+      url("./fonts/AGOptimaCyr-Bold.ttf") format("ttf");
+}
+
+@font-face {
+    font-family: "ArsenicaTrial";
+    src: 
+      local("ArsenicaTrial-Bold"),
+      url("./fonts/ArsenicaTrial-Bold.ttf") format("ttf");
+    font-weight: bold;
+}
+  
 body{
+    font-family: "AGOptimaCyr", sans-serif;
     padding: 0;
     margin: 0;
-
+    overflow-x: hidden;
+    font-weight: bold;
 }
 
 header{
     background-color: black;
-    height: 1400px;
+    height: 1150px;
 }
 
 h1, h2, p, li, a{
     color: white;
+}
+
+h2{
+    font-family: "ArsenicaTrial", sans-serif;
+    font-size: 50px;
 }
 
 p{
@@ -28,7 +50,7 @@ a{
 
 li{
     list-style: none;
-    font-size: 32px;
+    font-size: 24px;
 }
 
 hr{
@@ -40,9 +62,8 @@ aside{
     display: flex;
     flex-direction: column;
     align-items: end;
-    margin-top: 520px;
     grid-column: 10 / 13;
-    &>div+div{
-        margin-top: 30px;
+    &>a+div{
+        margin-top: 85px;
     }
 }
