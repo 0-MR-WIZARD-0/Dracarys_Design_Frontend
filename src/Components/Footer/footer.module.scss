@@ -1,0 +1,13 @@
+.wrapper_footer{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 0 20px;
+    margin: 0 20px;
+    padding: 60px 0;
+    .footer_info{
+        grid-column: span 7;
+    }
+    &>p{
+        grid-column: 9 / 12;
+    }
+}

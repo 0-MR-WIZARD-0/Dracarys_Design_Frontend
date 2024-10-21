@@ -1,4 +1,60 @@
 .wrapper_about{
-    height: 1240px;
-    background: linear-gradient(180deg, #390204 0%, #0C0C0C 100%);
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 0 20px;
+    margin: 0 20px;
+    padding: 50px 0;
+    &>h2{
+        grid-column: span 6;
+        grid-row: 1 / 2;
+    }
+    .about_company{
+        margin-top: 50px;
+        min-height: max-content;
+        padding: 40px;
+        grid-column: 3 / 12;
+        grid-row: 2 / 3;
+        background: rgba(217, 217, 217, 0.17);
+        border-radius: 15px 0px 15px 15px;
+    }
+    .switches{
+        margin-top: 50px;
+        grid-row: 3;
+        grid-column: span 5;
+        display: flex;
+        justify-content: space-around;
+        &>div{
+            text-align: center;
+        }
+        .switch_img{
+            cursor: pointer;
+            width: 180px;
+            height: 180px;
+            margin-bottom: 15px;
+            &>img{
+                border-radius: 50%;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+    .about_info{
+        margin-top: 50px;
+        height: 200px;
+        grid-row: 3;
+        grid-column: 7 / 13;
+        .info{
+            padding: 20px;
+            background: rgba(217, 217, 217, 0.15);
+            display: flex;
+            .label{
+                height: 100px;
+                width: 50px;
+                background-color: #681313;
+                margin-right: 10px;
+            }
+        }
+    }
 }

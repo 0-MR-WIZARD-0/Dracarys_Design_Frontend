@@ -1,0 +1,46 @@
+.wrapper_faq{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 0 20px;
+    margin: 0 20px;
+    &>div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        grid-column: span 1;
+        &>div{
+            width: 50px;
+            &>h2{
+                transform: rotate(270deg);
+            }
+        }
+    }
+    .faq_questions{
+        margin: 50px 0;
+        grid-column: 3 / 12;
+        .question{
+            width: 100%;
+            .question_button{
+                text-align: start;
+                padding: 20px 0 20px 30px;
+                width: 100%;
+                border: none;
+                border-radius: 10px;
+                &>p{
+                    font-family: 'AGOptimaCyr-Bold';
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: 33px;
+                    color: #000000;
+                }
+            }
+            .answer{
+                margin-top: -15px;
+                background-color: rgba(255, 255, 255, 0.1);
+                padding: 30px;
+                border: none;
+                border-radius: 0 0 20px 20px;
+            }
+        }
+    }
+}

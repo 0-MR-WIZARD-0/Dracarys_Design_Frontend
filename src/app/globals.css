@@ -27,21 +27,37 @@ body{
 }
 
 header{
-    background-color: black;
     height: 1150px;
 }
 
+section{
+
+}
+
+footer{
+
+}
+
+header, section, footer{
+    background-color: #0C0C0C;
+}
+
+footer{
+    height: max-content;
+    border-top: 3px solid #fff;
+}
+
 h1, h2, p, li, a{
-    color: white;
+    color: #fff;
 }
 
 h2{
     font-family: "ArsenicaTrial", sans-serif;
-    font-size: 50px;
+    font-size: 40px;
 }
 
 p{
-    font-size: 32px;
+    font-size: 24px;
 }
 
 a{
