@@ -3,18 +3,24 @@
     grid-template-columns: repeat(12, 1fr);
     grid-gap: 0 20px;
     margin: 0 20px;
+    height: 100vh;
     &>div{
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: start;
         grid-column: span 1;
-        &>div{
-            width: 50px;
-            &>h2{
-                transform: rotate(270deg);
-            }
+        &>hr{
+            height: 45%;
+            width: 2px;
+        }
+        &>h2{
+            margin-top: 50px;
+            margin-right: 20px;
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
         }
     }
+    
     .faq_questions{
         margin: 50px 0;
         grid-column: 3 / 12;
@@ -25,7 +31,7 @@
                 padding: 20px 0 20px 30px;
                 width: 100%;
                 border: none;
-                border-radius: 10px;
+                border-radius: 20px;
                 &>p{
                     font-family: 'AGOptimaCyr-Bold';
                     font-style: normal;
