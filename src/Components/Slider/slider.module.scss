@@ -1,0 +1,61 @@
+.sliderContainer {
+    grid-column: 1 / 13;
+    grid-row: 2 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    max-width: 80%;
+    margin: 80px auto;
+    // margin-bottom: 50px;
+  }
+  
+  .slides {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    img {
+      width: 300px;
+      height: 500px;
+      object-fit: cover;
+      border-radius: 10px;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+  
+      &.active {
+        opacity: 1;
+        transform: scale(1.1); // Увеличение для центрального активного изображения
+        border: 2px solid red; // Активное изображение выделено
+      }
+    }
+  }
+  
+  .prevButton,
+  .nextButton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    font-size: 2rem;
+    color: #fff;
+    cursor: pointer;
+    z-index: 10;
+  
+    &:disabled {
+      color: gray; // Заблокированные стрелки
+      cursor: not-allowed;
+    }
+  }
+  
+  .prevButton {
+    left: 10px;
+  }
+  
+  .nextButton {
+    right: 10px;
+  }
+  

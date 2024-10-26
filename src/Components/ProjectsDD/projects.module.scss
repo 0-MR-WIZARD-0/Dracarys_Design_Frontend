@@ -1,0 +1,48 @@
+.section3{
+    border-top: 3px solid white;
+    position: relative;
+    .dragon_left{
+        position: absolute;
+        height: 70%;
+        top: 150px;
+        left: -300px;
+    }
+    .dragon_right{
+        position: absolute;
+        height: 70%;
+        top: 150px;
+        right: -200px;
+    }
+    .wrapper_projects{
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        grid-gap: 0 20px;
+        margin: 0 20px;
+        height: max-content;
+        
+        .title{
+            grid-row: 1 / 2;
+            margin-top: 50px;
+            height: max-content;
+            grid-column: 8 / 13;
+            position: relative;
+            &>h2{
+                padding-left: 20px;
+                margin-bottom: 10px;
+            }
+            &>hr{
+                right: -20px;
+                position: absolute;
+                width: 100%;
+                height: 3px;
+            }
+        }
+    }
+    .pagination_projects{
+        grid-row: 4 / 5;
+        grid-column: 4 / 10;
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 50px;
+    }
+}

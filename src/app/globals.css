@@ -27,7 +27,7 @@ body{
 }
 
 header{
-    height: 1150px;
+    height: max-content;
 }
 
 section{
