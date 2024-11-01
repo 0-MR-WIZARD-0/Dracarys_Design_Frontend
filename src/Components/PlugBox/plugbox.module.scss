@@ -18,3 +18,11 @@
         }
     }
 }
+
+@media (min-width: 320px) and (max-width: 424.9px) { //mobile 4 fr
+  .wrapper_plug{
+    padding: 15px 0;
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+  }
+}

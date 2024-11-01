@@ -1,18 +1,19 @@
 "use client"
 
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from "swiper/modules";
+// import { Swiper, SwiperSlide } from 'swiper/react';
+// import { Navigation, Pagination } from "swiper/modules";
 import { useState } from 'react';
 import styles from "@/Components/Slider/slider.module.scss"
-import back from "@/app/assets/background_main.png"
+// import back from "@/app/assets/background_main.png"
+// import Image from 'next/image';
 
 const Slider = () => {
 
     const images = [
         "https://cs5.livemaster.ru/storage/83/ae/8b8099ef6cd9aede99c28aecb2sy--odezhda-dzhinsovaya-kurtka-s-printom-kastom-ruchnaya-rospis.jpg",
         "https://sun9-50.userapi.com/c855036/v855036645/3b0a0/DJ6UsnYRY2w.jpg",
-        "https://i.pinimg.com/736x/6f/ce/d8/6fced87451ce74cb9e656e90452c698c.jpg",
-        "src/app/assets/background_main.png",
+        "https://i.pinimg.com/736x/6f/ce/d8/6fced87451ce74cb9e656e90452c698c.jpg"
+        // "src/app/assets/background_main.png",
         // back
       ];
 

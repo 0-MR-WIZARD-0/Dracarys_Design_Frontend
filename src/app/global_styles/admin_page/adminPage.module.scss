@@ -1,0 +1,54 @@
+.admin_page{
+    background-color: black;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 20px;
+    align-content: center;
+    // margin: 0;
+    &>h1{
+        text-align: center;
+        grid-row: 1 / 2;
+        grid-column: 2 / 12;
+        color: white;
+        font-size: 100px;
+    }
+    &>ul{
+        display: flex;
+        justify-content: space-around;
+        grid-row: 2 / 3;
+        grid-column: 2 / 12;
+        color: white;
+        &>li{
+            color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            font-size: 24px;
+            &:hover{
+                color: #fff;
+            }
+        }
+    }
+    &>form{
+        display: flex;
+        grid-row: 3 / 4;
+        grid-column: 2 / 12;
+        flex-direction: column;
+        border: 1px solid white;
+        border-radius: 30px;
+        // background-color: rgba(255, 255, 255, 0.5);
+        height: max-content;
+        padding: 30px;
+        &>label{
+            color: white;
+            margin-bottom: 10px;
+        }
+        &>input{
+            padding: 15px 0;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            &::placeholder{
+                padding-left: 15px;
+            }
+        }
+    }
+}

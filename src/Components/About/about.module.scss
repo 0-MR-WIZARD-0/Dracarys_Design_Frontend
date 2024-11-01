@@ -1,13 +1,23 @@
+.section2{
+    position: relative;
+    background: linear-gradient(180deg, #390204 0%, #0C0C0C 100%);
+    &>img{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        mix-blend-mode: multiply;
+    }
 .wrapper_about{
     height: auto;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-gap: 0 20px;
     margin: 0 20px;
-    height: 100vh;
-    padding: 50px 0;
+    height: max-content;
+    padding-top: 50px;
+    padding-bottom: 100px;
     &>div{
-        grid-column: span 6;
+        grid-column: 1 / 9;
         grid-row: 1 / 2;
         position: relative;
         &>h2{
@@ -17,13 +27,13 @@
             position: absolute;
             left: -20px;
             height: 3px;
-            width: 75%;
+            width: 100%;
         }
     }
     .about_company{
         position: relative;
         margin-top: 50px;
-        height: 200px;
+        height: max-content;
         padding: 35px;
         grid-column: 3 / 12;
         grid-row: 2 / 3;
@@ -73,7 +83,7 @@
     }
     .switches{
         margin-top: 150px;
-        grid-row: 3;
+        grid-row: 3 / 4;
         grid-column: span 5;
         display: flex;
         justify-content: space-around;
@@ -103,14 +113,14 @@
     }
     .about_info{
         margin-top: 150px;
-        height: 200px;
-        grid-row: 3;
+        height: max-content;
+        grid-row: 3 / 4;
         grid-column: 6 / 13;
         position: relative;
         z-index: 4;
         &>img{
             position: absolute;
-            top: -115px;
+            top: -105px;
             left: -53px;
             z-index: 4;
         }
@@ -133,15 +143,123 @@
                 top: 0;
             }
             .person{
-                margin-left: 50px;
+                margin-left: 70px;
                 z-index: 1;
                 &>h3{
-                    font-size: 35px;
                     color: #fff;
                     margin-bottom: 15px;
                 }
                 &>p{
                     width: 90%;
+                }
+            }
+        }
+    }
+}
+}
+
+@media (min-width: 1024px) and (max-width: 1456px) {
+    .section2{
+        .wrapper_about{
+            .switches{
+                &>div+div{
+                    margin-left: 10px;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023.9px) { //laptop 12 fr
+    .section2{
+        .wrapper_about{
+            .switches{
+                grid-column: 2 / 12;
+                .switch_img{
+                    width: 150px;
+                    height: 150px;
+                    &>img{
+                        width: 130px;
+                        height: 130px;
+                    }
+                }
+                &>div>a{
+                    font-size: 18px;
+                }
+            }
+            .about_info{
+                grid-row: 4 / 5;
+            }
+        }
+    }
+}
+
+@media (min-width: 425px) and (max-width: 767.9px) { //tablet 8 fr
+    .section2{
+        .wrapper_about{
+            grid-template-columns: repeat(8, 1fr);
+            &>div{
+                grid-column: 1 / 8;
+            }
+            .about_company{
+                padding: 20px;
+                grid-column: 1 / 9;
+            }
+            .switches{
+                grid-column: 1 / 9;
+                .switch_img{
+                    width: 140px;
+                    height: 140px;
+                    &>img{
+                        width: 120px;
+                        height: 120px;
+                    }
+                }
+            }
+            .about_info{
+                grid-row: 4 / 5;
+                grid-column: 2 / 9;
+                &>img{
+                    top: -78px;
+                    left: -50px;
+                    height: 180px;
+                }
+            }
+        }
+    }
+}
+
+
+@media (min-width: 320px) and (max-width: 424.9px) { //mobile 4 fr
+    .section2{
+        .wrapper_about{
+            grid-template-columns: repeat(4, 1fr);
+            &>div{
+                grid-column: 1 / 5;
+            }
+            .about_company{
+                padding: 15px;
+                grid-column: 1 / 5;
+            }
+            .switches{
+                grid-row: 3 / 4;
+                grid-column: 1 / 5;
+                .switch_img{
+                    width: 100px;
+                    height: 100px;
+                    &>img{
+                        width: 80px;
+                        height: 80px;
+                    }
+                }
+            }
+            .about_info{
+                grid-row: 4 / 5;
+                grid-column: 1 / 5;
+                &>img{
+                    top: -61px;
+                    left: -40px;
+                    height: 140px;
                 }
             }
         }

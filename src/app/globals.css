@@ -18,16 +18,23 @@
     font-weight: bold;
 }
   
+html{
+
+    overflow-x: hidden;
+}
+
 body{
     font-family: "AGOptimaCyr", sans-serif;
     padding: 0;
     margin: 0;
-    overflow-x: hidden;
+    /* overflow: hidden; */
     font-weight: bold;
+    /* background-color: black; */
 }
 
 header{
     height: max-content;
+
 }
 
 section{
@@ -53,11 +60,38 @@ h1, h2, p, li, a{
 
 h2{
     font-family: "ArsenicaTrial", sans-serif;
-    font-size: 40px;
+    font-size: 50px;
+    @media (min-width: 1024px) and (max-width: 1439.9px) {
+        font-size: 35px;
+    }
 }
 
-p{
+h3{
+    font-size: 35px;
+}
+
+h2, h3{
+    @media (min-width: 768px) and (max-width: 1023.9px) {
+        font-size: 35px;
+    }
+    @media (min-width: 320px) and (max-width: 767.9px) {
+        font-size: 25px;
+    }
+}
+
+p, a{
     font-size: 24px;
+    @media (min-width: 768px) and (max-width: 1023.9px) {
+        font-size: 20px;
+    }
+    /* tablet */
+    @media (min-width: 425px) and (max-width: 767.9px) {
+        font-size: 15px;
+    }
+    /* mobile */
+    @media (min-width: 320px) and (max-width: 424.9px) {  
+        font-size: 12px;
+    }
 }
 
 a{
@@ -67,6 +101,15 @@ a{
 li{
     list-style: none;
     font-size: 24px;
+    @media (min-width: 768px) and (max-width: 1023.9px) {
+        font-size: 20px;
+    }
+    @media (min-width: 425px) and (max-width: 767.9px) {
+        font-size: 15px;
+    }
+    @media (min-width: 320px) and (max-width: 424.9px) {
+        font-size: 12px;
+    }
 }
 
 hr{
@@ -78,8 +121,16 @@ aside{
     display: flex;
     flex-direction: column;
     align-items: end;
-    grid-column: 10 / 13;
+    grid-column: 12 / 13;
     &>a+div{
         margin-top: 85px;
+    }
+    @media (min-width: 320px) and (max-width: 424.9px) {
+        grid-column: 4 / 5;
+    
+    }
+    @media (min-width: 425px) and (max-width: 767.9px) {
+        grid-column: 8 / 9;
+    
     }
 }

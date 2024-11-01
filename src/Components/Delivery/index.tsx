@@ -6,13 +6,15 @@ const Delivery = () => {
   return (
     <section className={styles.section4}>
       <div className={styles.wrapper_delivery}>
-        <Image src={card} alt="card"/>
+        <div className={styles.card}>
+          <Image src={card} alt="card"/>
+          {/* <div className={styles.portal_frame}>
+            <div className={styles.portal}></div>
+          </div> */}
+        </div>
         <div className={styles.title}>
             <h2>Доставка</h2>
             <hr/>
-        </div>
-        <div className={styles.portal_frame}>
-          <div className={styles.portal}></div>
         </div>
           <p>Все заказы доставляются в фирменной упаковке нашего бренда.
             Мы уделяем внимание каждому этапу подготовки заказа

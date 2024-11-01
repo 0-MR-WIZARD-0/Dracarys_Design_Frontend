@@ -6,7 +6,7 @@
     justify-content: center;
     position: relative;
     width: 100%;
-    max-width: 80%;
+    // max-width: 80%;
     margin: 80px auto;
     // margin-bottom: 50px;
   }
@@ -58,4 +58,70 @@
   .nextButton {
     right: 10px;
   }
-  
+
+// @media (min-width: 1024px) and (max-width: 1439.9px) {
+//   .slides{
+//     &>img{
+//       width: 250px;
+//       height: 390px;
+//     }
+//   }
+// }
+
+@media (min-width: 768px) and (max-width: 1023.9px) {
+  .slides{
+    &>img{
+      width: 170px;
+      height: 220px;
+    }
+  }
+}
+
+@media (min-width: 425px) and (max-width: 767.9px) { //tablet 8 fr
+  .sliderContainer {
+    grid-column: 1 / 9;
+    .slides{
+      gap: 20px ;
+      &>img{
+        width: 120px;
+        height: 170px;
+      }
+    }
+    .prevButton,
+    .nextButton {
+      top: 100%;
+      transform: none;
+      margin-top: 20px;
+    }
+    .prevButton {
+      left: 25%;
+    }
+    .nextButton {
+      right: 25%;
+    }
+  }
+}
+
+@media (min-width: 320px) and (max-width: 424.9px) { //mobile 4 fr
+  .sliderContainer {
+    grid-column: 1 / 5;
+    .slides{
+      gap: 20px ;
+      &>img{
+        width: 80px;
+        height: 130px;
+      }
+    }
+    .prevButton, .nextButton {
+      top: 100%;
+      transform: none;
+      margin-top: 20px;
+    }
+    .prevButton {
+      left: 25%;
+    }
+    .nextButton {
+      right: 25%;
+    }
+  }
+}

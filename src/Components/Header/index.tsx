@@ -1,15 +1,15 @@
 import styles from "@/Components/Header/header.module.scss";
 import Image from "next/image";
 import logo from "@/app/assets/logo.svg";
-// import background from "@/app/assets/background_main.png";
+import background from "@/app/assets/background_main.png";
 import Aside from "../Aside";
 
 const Header = () => {
   return (
-    <header>
+    <header className={styles.header}>
+      <Image src={background} alt="background" className={styles.back}/>
+      <Image src={background} alt="background" className={styles.back_rotate}/>
       <div className={styles.wrapper_header}>
-      <div className={styles.back}/>
-      <div className={styles.back_rotate}/>
       <div className={styles.circle}></div>
       <div className={styles.circle_large}></div>
         <div className={styles.logo}>
@@ -34,10 +34,10 @@ const Header = () => {
             <h1>DRACARYS DESIGN</h1>
             <h2>FOR YOU</h2>
           </div>
-          <div className={styles.plug_text}>
-            <hr/>
-            <p>Место, где каждая идея превращается в нечто грандиозное!</p>
-          </div>
+        </div>
+        <div className={styles.plug_text}>
+          <hr/>
+          <p>Место, где каждая идея превращается в нечто грандиозное!</p>
         </div>
         <Aside/>
       </div>

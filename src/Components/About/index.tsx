@@ -5,7 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import web_dev from "@/app/assets/web-dev.jpg";
 import gr_dev from "@/app/assets/gr-dev.jpg";
-import DD from "@/app/assets/DD_black.svg";
+// import DD from "@/app/assets/DD_black.svg";
+import background_about from "@/app/assets/background_about.png";
 import Logo_Pattert from "@/app/assets/pattern_logo_white.svg";
 
 import { useState } from "react";
@@ -35,7 +36,8 @@ const About = () => {
   };
 
   return (
-    <section>
+    <section className={styles.section2}>
+      <Image alt="background_about" src={background_about}/>
       <div className={styles.wrapper_about}>
         <div>
           <h2>История возникновения</h2>
@@ -47,9 +49,9 @@ const About = () => {
               <div onClick={()=>handleInfoCompany('history')} className={selectedTab === 'history' ? styles.active_tab : ''}></div>
               <div onClick={()=>handleInfoCompany('aspiration')} className={selectedTab === 'aspiration' ? styles.active_tab : ''}></div>
             </div>
-            <div className={styles.img_company}>
+            {/* <div className={styles.img_company}>
               <Image src={DD} alt="title"/>
-            </div>
+            </div> */}
             <p>{tabContent[selectedTab]}</p>
         </div>
         <div className={styles.switches}>

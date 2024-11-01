@@ -1,3 +1,5 @@
+export const section2: string;
+
 export const wrapper_about: string;
 export const about_company: string;
 export const tabs: string;

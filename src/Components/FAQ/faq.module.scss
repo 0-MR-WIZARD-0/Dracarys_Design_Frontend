@@ -3,7 +3,6 @@
     grid-template-columns: repeat(12, 1fr);
     grid-gap: 0 20px;
     margin: 0 20px;
-    height: 100vh;
     &>div{
         display: flex;
         justify-content: center;
@@ -20,10 +19,9 @@
             transform: rotate(180deg);
         }
     }
-    
     .faq_questions{
         margin: 50px 0;
-        grid-column: 3 / 12;
+        grid-column: 2 / 12;
         .question{
             width: 100%;
             .question_button{
@@ -49,4 +47,76 @@
             }
         }
     }
+}
+
+@media (min-width: 425px) and (max-width: 767.9px) { //tablet 8 fr
+    .wrapper_faq{
+        grid-template-columns: repeat(8, 1fr);
+        &>div{
+            flex-direction: column;
+            grid-column: 1 / 7;
+            grid-row: 1 / 2;
+            position: relative;
+            &>hr{
+                height: 2px;
+                width: 100%;
+                position: absolute;
+                left: -20px;
+                bottom: -10px;
+            }
+            &>h2{
+                margin-top: 20px;
+                margin-right: 0px;
+                writing-mode:inherit;
+                transform: rotate(0deg);
+            }
+        }
+    .faq_questions{
+        grid-column: 1 / 9;
+        grid-row: 2 / 3;
+        .question{
+            .question_button{
+                padding: 10px 20px 10px 20px;
+            }
+        }
+    }
+    }
+}
+
+@media (min-width: 320px) and (max-width: 424.9px) { //mobile 4 fr
+    .wrapper_faq{
+        grid-template-columns: repeat(4, 1fr);
+        &>div{
+            flex-direction: column;
+            grid-column: 1 / 5;
+            grid-row: 1 / 2;
+            position: relative;
+            &>hr{
+                height: 2px;
+                width: 100%;
+                position: absolute;
+                left: -20px;
+                bottom: -10px;
+            }
+            &>h2{
+                margin-top: 20px;
+                margin-right: 0px;
+                writing-mode:inherit;
+                transform: rotate(0deg);
+            }
+        }
+        .faq_questions{
+            grid-column: 1 / 5;
+            grid-row: 2 / 3;
+            .question{
+                .question_button{
+                    padding: 10px 0 10px 20px;
+                    &>p{
+                        line-height: 15px;
+                    }
+                }
+            }
+        }
+    }
+
 }
