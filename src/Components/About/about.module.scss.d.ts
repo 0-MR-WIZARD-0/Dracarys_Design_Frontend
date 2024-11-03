@@ -1,9 +1,9 @@
 export const section2: string;
-
+export const blackout: string;
 export const wrapper_about: string;
 export const about_company: string;
 export const tabs: string;
-export const img_company: string;
+export const content: string;
 export const about_us: string;
 export const switches: string;
 export const about_info: string;

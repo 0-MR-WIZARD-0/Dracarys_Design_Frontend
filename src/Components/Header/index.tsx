@@ -9,9 +9,15 @@ const Header = () => {
     <header className={styles.header}>
       <Image src={background} alt="background" className={styles.back}/>
       <Image src={background} alt="background" className={styles.back_rotate}/>
+      <div className={styles.animation_wrapper}>
+        <div className={`${styles.particle} ${styles.particle_1}`}></div>
+        <div className={`${styles.particle} ${styles.particle_2}`}></div>
+        <div className={`${styles.particle} ${styles.particle_3}`}></div>
+        <div className={`${styles.particle} ${styles.particle_4}`}></div>
+      </div>
       <div className={styles.wrapper_header}>
-      <div className={styles.circle}></div>
-      <div className={styles.circle_large}></div>
+        <div className={styles.circle}></div>
+        <div className={styles.circle_large}></div>
         <div className={styles.logo}>
           <Image src={logo} alt="logo"/>
         </div>

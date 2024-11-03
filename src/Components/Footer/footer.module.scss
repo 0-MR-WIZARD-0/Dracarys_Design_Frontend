@@ -19,20 +19,6 @@
     }
 }
 
-// @media (min-width: 425px) and (max-width: 767.9px) {
-//     .wrapper_footer{
-//         .footer_info{
-//             grid-row: 1 / 2;
-//             grid-column: span 11;
-//         }
-//         &>p{
-//             margin-top: 20px;
-//             grid-row: 2 / 3;
-//             grid-column: 1 / 11;
-//         }
-//     }
-// }
-
 @media (min-width: 425px) and (max-width: 767.9px) { //tablet 8 fr
     .wrapper_footer{
         grid-template-columns: repeat(8, 1fr);

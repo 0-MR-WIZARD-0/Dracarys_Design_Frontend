@@ -1,3 +1,24 @@
+$color-bg: #111;
+$color-particle: #fff;
+$spacing: 3000px;
+$time-1: 60s;
+$time-2: 120s;
+$time-3: 180s;
+$time-4: 600s;
+
+@function particles($max) {
+    $val: 0px 0px $color-particle;
+    @for $i from 1 through $max {
+       $val: #{$val},
+       random($spacing)+px random($spacing)+px $color-particle;
+    }
+    @return $val;
+ }
+ 
+ @mixin particles($max) {
+    box-shadow: particles($max);
+ }
+
 .header{
     position: relative;
     .back{
@@ -6,6 +27,7 @@
         height: 100%;
         mix-blend-mode: overlay;
         position: absolute;
+        object-fit: cover;
     }
     .back_rotate{
         z-index: 2;
@@ -14,7 +36,66 @@
         mix-blend-mode: overlay;
         transform: rotate(180deg);
         position: absolute;
+        object-fit: cover;
     }
+    // .particle, .particle:after {
+    //     // background: transparent;
+    // }
+    .particle:after {
+        position: absolute;
+        content: "";
+        top: $spacing;
+    }
+    .particle_1 {
+        animation: animParticle $time-1 linear infinite;
+        @include particles(600);
+        height: 2px;
+        width: 2px;
+    }
+    .particle_1:after {
+        @include particles(600);
+        height: 2px;
+        width: 2px;
+    }
+    .particle_2 {
+        animation: animParticle $time-2 linear infinite;
+        @include particles(200);
+        height: 2px;
+        width: 2px;
+    }
+    .particle_2:after {
+        @include particles(200);
+        height: 2px;
+        width: 2px;
+    }
+    .particle_3 {
+        animation: animParticle $time-3 linear infinite;
+        @include particles(100);
+        height: 3px;
+        width: 3px;
+    }
+    .particle_3:after {
+        @include particles(100);
+        height: 3px;
+        width: 3px;
+    }
+    .particle_4 {
+        animation: animParticle $time-4 linear infinite;
+        @include particles(400);
+        height: 2px;
+        width: 2px;
+    }
+    .particle_4:after {
+        @include particles(400);
+        height: 2px;
+        width: 2px;
+    }
+
+    @keyframes animParticle {
+        from { transform: translateY(0px); }
+        to   { transform: translateY($spacing * -1); }
+    }
+
     .wrapper_header{
         display: grid;
         grid-template-columns: repeat(12, 1fr);
@@ -87,11 +168,17 @@
             grid-row: 2 / 2;
             .title{
                 grid-row: 3 / 4;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: max-content;
                 &>h1{
+                    width: max-content;
                     font-size: 66px;
                     font-family: "ArsenicaTrial", sans-serif;
                 }
                 &>h2{
+                    width: max-content;
                     font-family: "ArsenicaTrial", sans-serif;
                     font-size: 100px;
                     -webkit-text-stroke-color: #fff;
@@ -127,27 +214,57 @@
     }
 }
 
+@media (min-width: 1024px) and (max-width: 1339.9px) { //laptop 12 fr
+    .header{
+        .wrapper_header{
+            &>nav{
+                margin-top: 40px;
+                &>ul>li{
+                    padding-bottom: 30px;
+                    font-size: 18px;
+                }
+            }
+            .content_header{
+                margin-top: 140px;
+                grid-column: 1 / 10;
+                .title{
+                    &>h1{
+                        font-size: 55px;
+                    }
+                    &>h2{
+                        font-size: 50px;
+                    }
+                }
+            }
+        }
+    }
+}
+
 @media (min-width: 768px) and (max-width: 1023.9px) { //laptop 12 fr
     .header{
         .wrapper_header{
+            &>nav{
+                margin-top: 40px;
+                &>ul>li{
+                    padding-bottom: 30px;
+                    font-size: 15px;
+                }
+            }
             .content_header{
+                margin-top: 140px;
                 grid-column: 1 / 10;
                 .title{
                     grid-row: 3 / 4;
                     &>h1{
-                        font-size: 50px;
-                        font-family: "ArsenicaTrial", sans-serif;
+                        font-size: 45px;
                     }
                     &>h2{
-                        font-family: "ArsenicaTrial", sans-serif;
-                        font-size: 45px;
-                        -webkit-text-stroke-color: #fff;
-                        -webkit-text-stroke-width: 1px;
-                        -webkit-text-fill-color: transparent;
+                        font-size: 40px;
                     }
                 }
             }
             .plug_text{
+                grid-column: 1 / 8;
                 margin-top: 50px;
                 margin-bottom: 50px;
             }
@@ -184,6 +301,8 @@
                 margin-top: 50px;
                 grid-row: 3 / 4;
                 grid-column: 1 / 9;
+                display: flex;
+                justify-content: center;
                 .title{
                     text-align: center;
                     &>h1{
@@ -228,7 +347,7 @@
                 grid-column: 1 / 5;
             }
             &>nav{
-                margin-top: 30px;
+                margin-top: 0px;
                 grid-column: 1 / 5;
                 &>ul>li
                 {
@@ -237,9 +356,11 @@
                 }
             }
             .content_header{
-                margin-top: 130px;
+                margin-top: 30px;
                 grid-row: 3 / 4;
                 grid-column: 1 / 5;
+                display: flex;
+                justify-content: center;
                 .title{
                     text-align: center;
                     &>h1{

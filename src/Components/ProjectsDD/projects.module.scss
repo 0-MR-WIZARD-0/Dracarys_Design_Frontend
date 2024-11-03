@@ -1,18 +1,20 @@
 .section3{
     border-top: 3px solid white;
     position: relative;
-    overflow: hidden;
+    overflow-x: clip;
     .dragon_left{
         position: absolute;
         height: 70%;
         top: 150px;
         left: -300px;
+        opacity: 50%;
     }
     .dragon_right{
         position: absolute;
         height: 70%;
         top: 150px;
         right: -200px;
+        opacity: 50%;
     }
     .wrapper_projects{
         display: grid;
@@ -20,7 +22,7 @@
         grid-gap: 0 20px;
         margin: 0 20px;
         height: max-content;
-        
+        position: relative;
         .title{
             grid-row: 1 / 2;
             margin-top: 50px;
@@ -37,15 +39,17 @@
                 width: 100%;
                 height: 3px;
             }
-            .combez{
-                top: -191px;
-                position: absolute;
-                width: 220px;
-                height: 420px;
-                right: 0;
-                transform: matrix(-1, 0, 0, 1, 0, 0);
-                z-index: 3;
-            }
+            
+        }
+        .combez{
+            grid-column: 10 / 13;
+            top: -135px;
+            position: absolute;
+            width: 70%;
+            right: 0;
+            height: 430px;
+            transform: matrix(-1, 0, 0, 1, 0, 0);
+            z-index: 3;
         }
     }
     .pagination_projects{
@@ -66,16 +70,66 @@
     }
 }
 
+@media (min-width: 1024px) and (max-width: 1439.9px) { //12 fr
+    .section3{
+        .wrapper_projects{
+            .combez{
+                grid-column: 10 / 13;
+                height: 400px;
+                top: -136px;
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023.9px) { //12 fr
+    .section3{
+        .dragon_left{
+            height: 55%;
+            left: -350px;
+        }
+        .dragon_right{
+            height: 55%;
+            right: -250px;
+        }
+        .wrapper_projects{
+            .title{
+                grid-column: 6 / 13;
+            }
+            .combez{
+                grid-column: 9 / 13;
+                width: 60%;
+                height: 385px;
+                top: -125px;
+            }
+        }
+    }
+}
+
 @media (min-width: 425px) and (max-width: 767.9px) { //tablet 8 fr
     .section3{
         border-top: 3px solid white;
+        .dragon_left{
+            height: 40%;
+            left: -350px;
+        }
+        .dragon_right{
+            height: 40%;
+            right: -350px;
+        }
         .wrapper_projects{
             grid-template-columns: repeat(8, 1fr);
             .title{
-                grid-column: 3 / 9;
+                grid-column: 2 / 9;
                 &>hr{
                     height: 3px;
                 }
+            }
+            .combez{
+                grid-column: 7 / 9;
+                width: 100%;
+                height: 300px;
+                top: -88px;
             }
         }
         .pagination_projects{
@@ -84,10 +138,30 @@
     }
 }
 
+@media (min-width: 425px) and (max-width: 599.9px) {
+    .section3{
+        .wrapper_projects{
+            .combez{
+                grid-column: 6 / 9;
+                width: 90%;
+                height: 300px;
+                top: -88px;
+            }
+        }
+    }
+}
 
 @media (min-width: 320px) and (max-width: 424.9px) { //mobile 4 fr
     .section3{
         border-top: 2px solid white;
+        .dragon_left{
+            height: 30%;
+            left: -350px;
+        }
+        .dragon_right{
+            height: 30%;
+            right: -350px;
+        }
         .wrapper_projects{
             grid-template-columns: repeat(4, 1fr);
             .title{
@@ -96,8 +170,38 @@
                     height: 2px;
                 }
             }
+            .combez{
+                grid-column: 3 / 5;
+                width: 70%;
+                height: 245px;
+                top: -55px;
+            }
             .pagination_projects{
                 grid-column: 1 / 5;
+            }
+        }
+    }
+}
+
+@media (min-width: 344px) and (max-width: 424.9px) {
+    .section3{
+        .wrapper_projects{
+            .combez{
+                width: 65%;
+                height: 200px;
+                top: -28px;
+            }
+        }
+    }
+}
+
+@media (min-width: 320px) and (max-width: 343.9px) {
+    .section3{
+        .wrapper_projects{
+            .combez{
+                width: 75%;
+                height: 200px;
+                top: -28px;
             }
         }
     }

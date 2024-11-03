@@ -4,9 +4,9 @@ import styles from "@/Components/ProjectsDD/projects.module.scss"
 import Slider from "../Slider"
 import PreviewAndReview from "../PreviewAndReview"
 import { useState } from "react"
-// import Image from "next/image"
-// import dragon_red from "@/app/assets/dragon_red.svg"
-// import combez from "@/app/assets/combez.png"
+import Image from "next/image"
+import dragon_red from "@/app/assets/dragon_red.svg"
+import combez from "@/app/assets/combez.png"
 
 const ProjectsDD = () => {
 
@@ -18,13 +18,13 @@ const ProjectsDD = () => {
 
   return (
     <section className={styles.section3}>
-      {/* <div> */}
-        {/* <Image className={styles.dragon_left} src={dragon_red} alt="dragon_red"/>
-        <Image className={styles.dragon_right} src={dragon_red} alt="dragon_red"/> */}
-      {/* </div> */}
+      <div>
+        <Image className={styles.dragon_left} src={dragon_red} alt="dragon_red"/>
+        <Image className={styles.dragon_right} src={dragon_red} alt="dragon_red"/>
+      </div>
       <div className={styles.wrapper_projects}>
+          <Image src={combez} className={styles.combez} alt="combez"/>
         <div className={styles.title}>
-          {/* <Image src={combez} className={styles.combez} alt="combez"/> */}
           <h2>Проекты DD</h2>
           <hr/>
         </div>

@@ -5,9 +5,10 @@ import Image from "next/image";
 import Link from "next/link";
 import web_dev from "@/app/assets/web-dev.jpg";
 import gr_dev from "@/app/assets/gr-dev.jpg";
-// import DD from "@/app/assets/DD_black.svg";
+import DD from "@/app/assets/DD_black.svg";
 import background_about from "@/app/assets/background_about.png";
 import Logo_Pattert from "@/app/assets/pattern_logo_white.svg";
+import dragon from "@/app/assets/dragon_pattern_white.png"
 
 import { useState } from "react";
 
@@ -31,14 +32,26 @@ const About = () => {
            Каждая работа — это симбиоз креатива, смелости и технологии, воплощенный в дизайне, 
            который выделяет нас среди других. В "Dracarys Design" мы не просто творим, 
            мы зажигаем наш бренд огнем креативности!`,
-    history: ``,
+    history: `Студия Dracarys Design. Место, где каждая идея превращается в нечто грандиозное. 
+           Мы вдохновились силой и эстетикой драконов, чтобы создавать уникальные и эффектные 
+           работы, которые не только будут привлекать внимание, но и запомнятся вам надолго! 
+           Каждая работа — это симбиоз креатива, смелости и технологии, воплощенный в дизайне, 
+           который выделяет нас среди других. В "Dracarys Design" мы не просто творим, 
+           мы зажигаем наш бренд огнем креативности!Студия Dracarys Design. Место, где каждая идея превращается в нечто грандиозное. 
+           Мы вдохновились силой и эстетикой драконов, чтобы создавать уникальные и эффектные 
+           работы, которые не только будут привлекать внимание, но и запомнятся вам надолго! 
+           Каждая работа — это симбиоз креатива, смелости и технологии, воплощенный в дизайне, 
+           который выделяет нас среди других. В "Dracarys Design" мы не просто творим, 
+           мы зажигаем наш бренд огнем креативности!`,
     aspiration: ``
   };
 
   return (
     <section className={styles.section2}>
       <Image alt="background_about" src={background_about}/>
+      <div className={styles.blackout}></div>
       <div className={styles.wrapper_about}>
+        <Image src={dragon} alt=""/>
         <div>
           <h2>История возникновения</h2>
           <hr/>
@@ -49,10 +62,10 @@ const About = () => {
               <div onClick={()=>handleInfoCompany('history')} className={selectedTab === 'history' ? styles.active_tab : ''}></div>
               <div onClick={()=>handleInfoCompany('aspiration')} className={selectedTab === 'aspiration' ? styles.active_tab : ''}></div>
             </div>
-            {/* <div className={styles.img_company}>
+            <div className={styles.content}>
+              <p>{tabContent[selectedTab]}</p>
               <Image src={DD} alt="title"/>
-            </div> */}
-            <p>{tabContent[selectedTab]}</p>
+            </div>
         </div>
         <div className={styles.switches}>
           <div>
