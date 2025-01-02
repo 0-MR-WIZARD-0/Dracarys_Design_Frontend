@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const Delivery = () => {
   return (
-    <section className={styles.section4}>
+    <section id="delivery" className={styles.section4}>
       <div className={styles.wrapper_delivery}>
         <div className={styles.card}>
           <Image src={card} alt="card"/>

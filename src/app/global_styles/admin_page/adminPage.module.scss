@@ -6,6 +6,36 @@
     grid-gap: 20px;
     align-content: center;
     padding: 0 20px;
+    .buttons{
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        margin-top: 30px;
+        &>button{
+            cursor: pointer;
+            padding: 10px 80px;
+            border-radius: 10px;
+            border: 1px solid white;
+            &:hover{
+                border: 1px solid white;
+                background-color: black;
+                color: white;
+            }
+        }
+    }
+    .create_button{
+        margin-top: 30px;
+        width: 100%;
+        cursor: pointer;
+        padding: 10px 80px;
+        border-radius: 10px;
+        border: 1px solid white;
+        &:hover{
+            border: 1px solid white;
+            background-color: black;
+            color: white;
+        }
+    }
     &>h1{
         margin-top: 20px;
         text-align: center;
@@ -31,6 +61,7 @@
             color: #fff;
         }
     }
+    
     &>form{
         display: flex;
         flex-direction: column;
@@ -127,7 +158,28 @@
         .input_file input[type=file]:disabled + .input_file_btn {
             background-color: #eee;
         }
+        
     }
+
+    .view_projects{
+        color: white;
+        grid-column: 2 / 12;
+        &>.element{
+            border: 1px solid white;
+            padding: 40px;
+            margin-bottom: 50px;
+            &>.info{
+                &>*{
+                    margin-bottom: 10px;
+                }
+                &>img{
+                    width: 100px;
+                    height: 100px;
+                }
+            }
+        }
+    }
+
     .wrapper_feedbacks{
         grid-row: 3 / 4;
         grid-column: 2 / 12;
@@ -143,25 +195,7 @@
             &>p{
                 margin-bottom: 10px;
             }
-            .buttons{
-                width: 100%;
-                display: flex;
-                justify-content: space-evenly;
-                &>button{
-                    cursor: pointer;
-                    padding: 10px 80px;
-                    border-radius: 10px;
-                    border: 1px solid white;
-                }
-                &>button:first-of-type:hover{
-                    background-color: #390204;
-                    color: white;
-                }
-                &>button:last-of-type:hover{
-                    background-color: #19890a;
-                    color: white;
-                }
-            }
+            
         }
     }
 }
@@ -175,12 +209,21 @@
                 padding: 10px 0px;
             }
         }
+        .view_projects{
+            grid-column: 2 / 12;
+        }
     }
 }
 
 @media (min-width: 425px) and (max-width: 767.9px) { //tablet 8 fr
     .admin_page{
         grid-template-columns: repeat(8, 1fr);
+        .buttons{
+            flex-direction: column;
+            &>button+button{
+                margin-top: 20px;
+            }
+        }
         &>h1{
             grid-row: 1 / 2;
             grid-column: 1 / 9;
@@ -210,11 +253,20 @@
                 }
             }
         }
+        .view_projects{
+            grid-column: 1 / 9;
+        }
     }
 }
 
 @media (min-width: 320px) and (max-width: 424.9px) { //mobile 4 fr
     .admin_page{
+        .buttons{
+            flex-direction: column;
+            &>button+button{
+                margin-top: 20px;
+            }
+        }
         grid-template-columns: repeat(4, 1fr);
         &>h1{
             grid-row: 1 / 2;
@@ -252,6 +304,9 @@
                     }
                 }
             }
+        }
+        .view_projects{
+            grid-column: 1 / 5;
         }
     }
 }

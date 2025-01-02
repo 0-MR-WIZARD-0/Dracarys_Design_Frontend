@@ -3,6 +3,7 @@ import Image from "next/image";
 import logo from "@/app/assets/logo.svg";
 import background from "@/app/assets/background_main.png";
 import Aside from "../Aside";
+import Link from "next/link";
 
 const Header = () => {
   return (
@@ -23,16 +24,16 @@ const Header = () => {
         </div>
         <nav>
           <ul>
-            <li>История возникновения</li>
-            <hr/>
-            <li>Прокты DD</li>
-            <hr/>
-            <li>Доставка</li>
-            <hr/>
-            <li>FAQ</li>
-            <hr/>
-            <li>Контакты</li>
-            <hr/>
+            <li><Link href="#about">История возникновения</Link></li>
+            {/* <hr/> */}
+            <li><Link href="#projects">Прокты DD</Link></li>
+            {/* <hr/> */}
+            <li><Link href="#delivery">Доставка</Link></li>
+            {/* <hr/> */}
+            <li><Link href="#faq">FAQ</Link></li>
+            {/* <hr/> */}
+            <li><Link href="#footer">Контакты</Link></li>
+            {/* <hr/> */}
           </ul>
         </nav>
         <div className={styles.content_header}>

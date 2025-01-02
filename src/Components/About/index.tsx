@@ -47,7 +47,7 @@ const About = () => {
   };
 
   return (
-    <section className={styles.section2}>
+    <section id="about" className={styles.section2}>
       <Image alt="background_about" src={background_about}/>
       <div className={styles.blackout}></div>
       <div className={styles.wrapper_about}>

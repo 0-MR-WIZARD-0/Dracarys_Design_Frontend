@@ -9,7 +9,7 @@ const Footer = () => {
   const {Canvas} = useQRCode()
 
   return (
-    <footer>
+    <footer id='footer'>
         <div className={styles.wrapper_footer}>
             <div className={styles.footer_info}>
                 <div>

@@ -9,6 +9,7 @@
     overflow: hidden;
     box-sizing: border-box;
     text-align: center;
+    z-index: 4;
     @keyframes plug {
         0% {
           transform: translateX(0%);

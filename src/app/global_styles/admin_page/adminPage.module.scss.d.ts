@@ -7,3 +7,7 @@ export const active_tab: string;
 export const wrapper_feedbacks: string;
 export const feedback: string;
 export const buttons: string;
+export const view_projects: string;
+export const element: string;
+export const info: string;
+export const create_button: string;

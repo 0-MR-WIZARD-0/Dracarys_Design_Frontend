@@ -19,7 +19,7 @@
 }
   
 html{
-
+    scroll-behavior: smooth;
     overflow-x: hidden;
 }
 
@@ -41,15 +41,12 @@ section{
 
 }
 
-footer{
-
-}
-
 header, section, footer{
     background-color: #0C0C0C;
 }
 
 footer{
+    
     height: max-content;
     border-top: 3px solid #fff;
 }
@@ -79,7 +76,7 @@ h2, h3{
     }
 }
 
-p, a{
+p{
     font-size: 24px;
     @media (min-width: 768px) and (max-width: 1023.9px) {
         font-size: 20px;
@@ -98,7 +95,7 @@ a{
     text-decoration: none;
 }
 
-li{
+li, a{
     list-style: none;
     font-size: 24px;
     @media (min-width: 768px) and (max-width: 1023.9px) {
@@ -125,12 +122,21 @@ aside{
     &>a+div{
         margin-top: 85px;
     }
-    @media (min-width: 320px) and (max-width: 424.9px) {
-        grid-column: 4 / 5;
-    
+    @media (min-width: 768px) and (max-width: 1339.9px) {
+        &>a+div{
+            margin-top: 70px;
+        } 
     }
     @media (min-width: 425px) and (max-width: 767.9px) {
         grid-column: 8 / 9;
-    
+        &>a+div{
+            margin-top: 50px;
+        } 
+    }
+    @media (min-width: 320px) and (max-width: 424.9px) {
+        grid-column: 4 / 5;
+        &>a+div{
+            margin-top: 50px;
+        } 
     }
 }

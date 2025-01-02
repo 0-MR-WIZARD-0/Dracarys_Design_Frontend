@@ -1,11 +1,15 @@
 .telegram, .comment{
     position: fixed;
-    z-index: 3;
+    z-index: 99;
     top: 600px;
     width: 70px;
     height: 70px;
     border-radius: 50%;
     border: none;
+    cursor: pointer;
+}
+
+.telegram{
     background-color: white;
     cursor: pointer;
     &>img{
@@ -15,9 +19,31 @@
     }
 }
 
-@media (min-width: 768px) and (max-width: 1439.9px) {
+.comment{
+    background-color: rgba(255, 255, 255, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &>img{
+        padding-top: 5px;
+        width: 70%;
+        height: 70%;
+    }
+    
+}
+
+@media (min-width: 768px) and (max-width: 1339.9px) {
     .telegram, .comment{
+        top: 550px;
         width: 50px;
         height: 50px;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 767.9px) {
+    .telegram, .comment{
+        top: 590px;
+        width: 40px;
+        height: 40px;
     }
 }
