@@ -1,0 +1,26 @@
+@import "../../app/colors.scss";
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    .pagination_button {
+      margin: 0 5px;
+      padding: 5px 10px;
+      cursor: pointer;
+      border: 1px solid $white;
+      border-radius: 5px;
+      background-color: $black;
+      transition: background-color 0.3s ease;
+      color: $white;
+      &:hover {
+        background-color: $white;
+        color: $black;
+      }
+    }
+    .active {
+      background-color: $white;
+      color: $black;
+    }
+  }
+  

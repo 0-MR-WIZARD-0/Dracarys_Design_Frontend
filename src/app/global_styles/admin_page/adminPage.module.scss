@@ -183,6 +183,9 @@
     .wrapper_feedbacks{
         grid-row: 3 / 4;
         grid-column: 2 / 12;
+        &>div+div{
+            margin-top: 50px;
+        }
         .feedback{
             border: 1px solid white;
             border-radius: 30px;

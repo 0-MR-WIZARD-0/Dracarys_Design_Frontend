@@ -4,8 +4,9 @@ import styles from '@/Components/Aside/aside.module.scss';
 import Image from 'next/image';
 import tg from '@/app/assets/tg.svg';
 import comment from '@/app/assets/comment.svg';
-import Modal from '@/Components/Modal';
+// import Modal from '@/Components/ModalReview';
 import { useState } from 'react';
+import ModalReview from '@/Components/ModalReview';
 
 const Aside = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -20,16 +21,13 @@ const Aside = () => {
 
   return (
     <aside>
-      {/* <div> */}
       <a className={styles.telegram} href="https://t.me/dracarys_design">
         <Image src={tg} alt="TG" />
       </a>
-
-      {/* </div> */}
       <div className={styles.comment} onClick={handleOpenModal}>
         <Image src={comment} alt="comment" />
       </div>
-      <Modal isOpen={isModalOpen} onClose={handleCloseModal} />
+      <ModalReview isOpen={isModalOpen} onClose={handleCloseModal} />
     </aside>
   );
 };

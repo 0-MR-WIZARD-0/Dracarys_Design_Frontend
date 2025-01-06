@@ -9,7 +9,7 @@ interface ModalProps {
   onClose: () => void;
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
+const ModalReview: React.FC<ModalProps> = ({ isOpen, onClose }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [content, setContent] = useState("");
@@ -155,4 +155,4 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
   );
 };
 
-export default Modal;
+export default ModalReview;

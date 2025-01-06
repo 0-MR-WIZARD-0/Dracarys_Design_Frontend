@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import "@/app/globals.css";
@@ -6,23 +7,12 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import ProjectListAdmin from "../Components/ProjectsListAdmin";
 import axios from "axios";
-import TokenChecker from "@/functions/tokenCheck";
+import TokenChecker from "@/services/utils/tokenCheck";
 import FAQListAdmin from "@/Components/FAQListAdmin";
-
-export interface Project {
-  id: number;
-  name: string;
-  category: 'customization' | 'design' | 'web-development';
-  description: string;
-  previewImage: string;
-  images: string[];
-}
-
-export interface FAQ {
-  id: number;
-  question: string;
-  answer: string
-}
+import { Project } from "@/types/project";
+import { FAQ } from "@/types/faq";
+import { deleteFAQ, deleteFeedback, deleteProject, fetchFAQ, fetchFeedback, fetchProjects } from "@/services/api/api";
+import ModalAdmin from "@/Components/ModalAdmin";
 
 const AdminPage = () => {
   const [selectedCategory, setSelectedCategory] = useState<"customization" | "design" | "web-development" | "FAQ" | "feedback">("customization");
@@ -36,50 +26,25 @@ const AdminPage = () => {
   const [projects, setProjects] = useState<Project[]>([]);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [feedbackList, setFeedbackList] = useState<any[]>([]); 
-
-  const fetchProjects = async (category: string) => {
-    try {
-      setProjects([])
-      const response = await axios.get(`http://localhost:3001/projects?category=${category}`);
-      const result = await response.data;
-      if (result && result.length > 0) {
-        setProjects(result);
-      } else {
-        setProjects([]);
-      }
-    } catch (error) {
-      setProjects([]);
-      console.error("Ошибка при загрузке данных:", error);
-    }
-  };
-
-  const fetchFAQ = async () => {
-    try {
-      const response = await axios.get('http://localhost:3001/faq');
-      setFaqList(response.data)
-    } catch (error) {
-      console.error("Ошибка при загрузке FAQ:", error);
-    }
-  };
-
-  const fetchFeedback = async () => {
-    try {
-      const response = await axios.get('http://localhost:3001/reviews');
-      console.log('Feedbacks:', response.data);
-      setFeedbackList(response.data);  
-    } catch (error) {
-      console.error("Ошибка при загрузке feedback:", error);
-    }
-  };
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [modalData, setModalData] = useState<any>(null);
+  const [modalType, setModalType] = useState<"project" | "faq" | "feedback">("project");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    if (selectedCategory === "customization" || selectedCategory === "design" || selectedCategory === "web-development") {
-      fetchProjects(selectedCategory);
-    } else if (selectedCategory === "FAQ") {
-      fetchFAQ();
-    } else if (selectedCategory === "feedback") {
-      fetchFeedback();
-    }
+    const fetchData = async () => {
+      if (selectedCategory === "customization" || selectedCategory === "design" || selectedCategory === "web-development") {
+        const projects = await fetchProjects(selectedCategory);
+        setProjects(projects);
+      } else if (selectedCategory === "FAQ") {
+        const faq = await fetchFAQ();
+        setFaqList(faq);
+      } else if (selectedCategory === "feedback") {
+        const feedback = await fetchFeedback();
+        setFeedbackList(feedback);
+      }
+    };
+    fetchData();
   }, [selectedCategory]);
 
   useEffect(() => {
@@ -141,12 +106,21 @@ const AdminPage = () => {
     }
   };
 
+  const handleEdit = (type: "project" | "faq" | "feedback", data: any) => {
+    setModalType(type);
+    setModalData(data);
+    setIsModalOpen(true);
+  };
+
   const handleDeleteProject = async (id: number) => {
     try {
-      const response = await axios.delete(`http://localhost:3001/projects/${id}`, {
-        method: "DELETE",
-      });
-      if (response.status === 200) {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        alert('Пожалуйста, авторизуйтесь');
+        return;
+      }
+      const success = await deleteProject(id, token);
+      if (success) {
         setProjects((prevProjects) => prevProjects.filter((project) => project.id !== Number(id)));
       } else {
         console.error("Ошибка при удалении проекта");
@@ -180,8 +154,13 @@ const AdminPage = () => {
 
   const handleDeleteFAQ = async (id: number) => {
     try {
-      const response = await axios.delete(`http://localhost:3001/faq/${id}`);
-      if (response.status === 200) {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        alert('Пожалуйста, авторизуйтесь');
+        return;
+      }
+      const success = await deleteFAQ(id, token);
+      if (success) {
         setFaqList((prevFaqList) => prevFaqList.filter((faq) => faq.id !== id));
       } else {
         console.error("Ошибка при удалении FAQ");
@@ -198,25 +177,26 @@ const AdminPage = () => {
         alert('Пожалуйста, авторизуйтесь');
         return;
       }
-  
-      const response = await axios.delete(`http://localhost:3001/reviews/${id}`, {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        },
-      });
-  
-      if (response.status === 200) {
-        setFeedbackList((prevFeedbackList) =>
-          prevFeedbackList.filter((feedback) => feedback.id !== id)
-        );
-      } else {
+      const success = await deleteFeedback(id, token);
+      if (success) {
+        setFeedbackList((prevFeedbackList) => prevFeedbackList.filter((feedback) => feedback.id !== id));
+      }  else {
         console.error("Ошибка при удалении отзыва");
       }
     } catch (error) {
       console.error("Ошибка при удалении отзыва:", error);
     }
   };
-  
+
+  const handleSave = (updatedData: any) => {
+    if (modalType === "project") {
+      setProjects((prevProjects) => prevProjects.map((project) => project.id === updatedData.id ? updatedData : project));
+    } else if (modalType === "faq") {
+      setFaqList((prevFaqList) => prevFaqList.map((faq) => faq.id === updatedData.id ? updatedData : faq));
+    } else if (modalType === "feedback") {
+      setFeedbackList((prevFeedbackList) => prevFeedbackList.map((feedback) => feedback.id === updatedData.id ? updatedData : feedback));
+    }
+  };
 
   return (
     <div className={styles.admin_page}>
@@ -234,23 +214,29 @@ const AdminPage = () => {
         ))}
       </ul>
 
+      <ModalAdmin
+        type={modalType}
+        data={modalData}
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onSave={handleSave}
+      />
+
       {selectedCategory === "feedback" && (
         <div className={styles.wrapper_feedbacks}>
-          {feedbackList.length > 0 ? (
-feedbackList.map((feedback) => (
-        <div key={feedback.id} className={styles.feedback}>
-          <h3>{feedback.firstName} {feedback.lastName}</h3>
-          <p>{feedback.content}</p>
-          <p>{new Date(feedback.createdAt).toLocaleDateString()}</p>
-          <div className={styles.buttons}>
-            <button>Одобрить</button>
-            <button onClick={() => handleDeleteFeedback(feedback.id)}>Отклонить</button>
+          {feedbackList.length > 0 ? ( feedbackList.map((feedback) => (
+          <div key={feedback.id} className={styles.feedback}>
+            <h3>{feedback.firstName} {feedback.lastName}</h3>
+            <p>{feedback.content}</p>
+            <p>{new Date(feedback.createdAt).toLocaleDateString()}</p>
+            <div className={styles.buttons}>
+              <button onClick={() => handleEdit("feedback", feedback)}>Одобрить</button>
+              <button onClick={() => handleDeleteFeedback(feedback.id)}>Отклонить</button>
+            </div>
           </div>
-        </div>
-      ))
-    ) : (
-      <p>Нет отзывов.</p>
-    )}
+        ))) : (
+          <p>Нет отзывов.</p>
+        )}
         </div>
       )}
 
@@ -295,7 +281,7 @@ feedbackList.map((feedback) => (
             </label>
             <button type="submit" className={styles.create_button}>Создать</button>
           </form>
-          <ProjectListAdmin projects={projects} onDelete={handleDeleteProject} />
+          <ProjectListAdmin projects={projects} onDelete={handleDeleteProject} onEdit={handleEdit}  />
         </>
       )}
 
@@ -316,7 +302,7 @@ feedbackList.map((feedback) => (
             />
             <button type="submit" className={styles.create_button}>Создать</button>
           </form>
-          <FAQListAdmin faq={faqList} onDelete={handleDeleteFAQ} />
+          <FAQListAdmin faq={faqList} onDelete={handleDeleteFAQ} onEdit={handleEdit}  />
         </>
       )}
     </div>

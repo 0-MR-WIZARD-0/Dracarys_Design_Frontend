@@ -2,16 +2,24 @@
 
 import { useState } from 'react';
 import styles from "@/Components/Slider/slider.module.scss";
-import Image from 'next/image';
-
-interface Project {
-  id: number;
-  previewImage: string;
-}
+import { Project } from '@/types/project';
 
 const Slider = ({ projects, onProjectSelect }: { projects: Project[], onProjectSelect: (id: number) => void }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const visibleImages = 3;
+
+  const getVisibleSlides = () => {
+    if (projects.length === 0) return [];
+    if (projects.length === 1) return [projects[0]];
+    const slides = [];
+    const totalProjects = projects.length;
+
+    for (let i = -1; i < visibleImages - 1; i++) {
+      const projectIndex = (activeIndex + i + totalProjects) % totalProjects;
+      slides.push(projects[projectIndex]);
+    }
+    return slides;
+  };
 
   const nextSlide = () => {
     if (projects.length > visibleImages) {
@@ -30,24 +38,17 @@ const Slider = ({ projects, onProjectSelect }: { projects: Project[], onProjectS
     onProjectSelect(projects[index].id);
   };
 
-  const getVisibleSlides = () => {
-    const slides = [];
-    const totalProjects = projects.length;
-
-    for (let i = -1; i < visibleImages - 1; i++) {
-      const projectIndex = (activeIndex + i + totalProjects) % totalProjects;
-      slides.push(projects[projectIndex]);
-    }
-    return slides;
-  };
-
   if (!projects || projects.length === 0) {
     return <div>Loading...</div>;
   }
 
   return (
     <div className={styles.sliderContainer}>
-      <button className={styles.prevButton} onClick={prevSlide}>←</button>
+      {projects.length > 1 && (
+        <>
+          <button className={styles.prevButton} onClick={prevSlide}>←</button>
+        </>
+      )}
 
       <div className={styles.slides}>
         {getVisibleSlides().map((project, index) => (
@@ -57,20 +58,24 @@ const Slider = ({ projects, onProjectSelect }: { projects: Project[], onProjectS
             onClick={() => selectSlide((activeIndex + index - 1) % projects.length)}
           >
             {project.previewImage ? (
-              <Image
-                src={project.previewImage}
-                alt={`Slide ${index + 1}`}
-                width={500}  
-                height={300} 
-              />
+              <>
+                <img
+                  src={`http://localhost:3001${project.previewImage}`}
+                  alt={`Slide ${index + 1}`}
+                  width={500}
+                  height={300}
+                />
+                <p>{project?.name}</p>
+              </>
             ) : (
               <div>Image not available</div>
             )}
           </div>
         ))}
       </div>
-
-      <button className={styles.nextButton} onClick={nextSlide}>→</button>
+      {projects.length > 1 && (
+        <button className={styles.nextButton} onClick={nextSlide}>→</button>
+      )}
     </div>
   );
 };

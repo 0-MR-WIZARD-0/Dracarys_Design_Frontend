@@ -22,6 +22,11 @@
     .faq_questions{
         margin: 50px 0;
         grid-column: 2 / 12;
+        display: flex;
+        flex-direction: column;
+        &>div+div{
+            margin-top: 30px;
+        }
         .question{
             width: 100%;
             .question_button{

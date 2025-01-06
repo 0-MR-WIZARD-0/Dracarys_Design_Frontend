@@ -2,12 +2,16 @@
 
 import styles from "@/Components/FAQ/faq.module.scss"
 import { useEffect, useState } from "react"
-import { fetchFAQ } from "@/services/api"
+import { fetchFAQ } from "@/services/api/api"
+import type { FAQ } from "@/types/faq"
+import Pagination from "@/Components/Pagination"
 
 const FAQ = () => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [faqList, setFaqList] = useState<any[]>([])
+  const [faqList, setFaqList] = useState<FAQ[]>([])
   const [isOpen, setIsOpen] = useState<number | null>(null)
+  
+  const itemsPerPage = 5
+  const [currentPage, setCurrentPage] = useState(1)
 
   const toggleOpen = (id: number) => {
     setIsOpen(isOpen === id ? null : id)
@@ -22,6 +26,17 @@ const FAQ = () => {
     loadFAQ()
   }, [])
 
+  const totalPages = Math.ceil(faqList.length / itemsPerPage)
+
+  const currentPageData = faqList.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  )
+
+  const goToPage = (page: number) => {
+    setCurrentPage(page)
+  }
+
   return (
     <section id="faq" style={{ position: "relative", zIndex: "4" }}>
       <div className={styles.wrapper_faq}>
@@ -30,9 +45,8 @@ const FAQ = () => {
           <hr />
         </div>
         <div className={styles.faq_questions}>
-          {faqList.length > 0 ? (
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            faqList.map((faq: any) => (
+          {currentPageData.length > 0 ? (
+            currentPageData.map((faq: FAQ) => (
               <div key={faq.id} className={styles.question}>
                 <button
                   onClick={() => toggleOpen(faq.id)}
@@ -48,9 +62,14 @@ const FAQ = () => {
               </div>
             ))
           ) : (
-            <p>{`Записи в блоке "Вопрос - Ответ' - отсутствуют`}</p>
+            <p>Записи в блоке &quot;Вопрос - Ответ&quot; отсутствуют</p>
           )}
         </div>
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={goToPage}
+        />
       </div>
     </section>
   )

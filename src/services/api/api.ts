@@ -40,6 +40,16 @@ export const fetchFeedback = async () => {
   }
 };
 
+export const fetchReviewByProjectId = async (projectId: number) => {
+  try {
+    const response = await axios.get(`http://localhost:3001/reviews/project/${projectId}`);
+    return response.data;
+  } catch (error) {
+    console.error("Ошибка при загрузке отзыва для проекта:", error);
+    return null;
+  }
+};
+
 export const deleteProject = async (id: number, token: string) => {
   try {
     const response = await axios.delete(`http://localhost:3001/projects/${id}`, {

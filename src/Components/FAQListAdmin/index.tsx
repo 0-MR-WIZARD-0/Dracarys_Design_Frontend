@@ -1,13 +1,15 @@
 import React from 'react'
 import styles from '@/app/global_styles/admin_page/adminPage.module.scss';
-import { FAQ } from '@/Pages/admin_page';
+import { FAQ } from '@/types/faq';
 
 interface FAQListProps {
   faq: FAQ[];
   onDelete: (id: number) => void;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  onEdit: (type: "faq", data: any) => void;
 }
 
-const FAQListAdmin: React.FC<FAQListProps> = ({ faq, onDelete }) => {
+const FAQListAdmin: React.FC<FAQListProps> = ({ faq, onDelete, onEdit }) => {
   return (
     <div className={styles.view_projects}>
       {faq.length > 0 ? (
@@ -18,7 +20,7 @@ const FAQListAdmin: React.FC<FAQListProps> = ({ faq, onDelete }) => {
                 <p>Ответ: {elem.answer}</p>
             </div>
             <div className={styles.buttons}>
-                <button>Редактировать</button>
+                <button onClick={() => onEdit("faq", elem)}>Редактировать</button>
                 <button onClick={() => onDelete(elem.id)}>Удалить</button>
             </div>
           </div>

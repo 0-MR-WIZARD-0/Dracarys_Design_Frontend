@@ -27,18 +27,11 @@ body{
     font-family: "AGOptimaCyr", sans-serif;
     padding: 0;
     margin: 0;
-    /* overflow: hidden; */
     font-weight: bold;
-    /* background-color: black; */
 }
 
 header{
     height: max-content;
-
-}
-
-section{
-
 }
 
 header, section, footer{
@@ -46,7 +39,6 @@ header, section, footer{
 }
 
 footer{
-    
     height: max-content;
     border-top: 3px solid #fff;
 }

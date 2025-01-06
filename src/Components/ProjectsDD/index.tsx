@@ -8,22 +8,13 @@ import { useEffect, useState } from "react"
 import Image from "next/image"
 import dragon_red from "@/app/assets/dragon_red.svg"
 import combez from "@/app/assets/combez.png"
-import { fetchProjectById, fetchProjects } from "@/services/api"
-
-interface Project {
-  id: number;
-  title: string;
-  previewImage: string;
-  review: string;
-  reviewerName: string;
-  reviewDate: string;
-  images: string[];
-}
+import { fetchProjectById, fetchProjects } from "@/services/api/api"
+import { Project } from "@/types/project"
 
 const ProjectsDD = () => {
 
   const [selectedArea, setSelectedArea] = useState<'customization' | 'design' | 'web-development'>('customization')
-  const [projects, setProjects] = useState<Project[]>([])  // Список проектов
+  const [projects, setProjects] = useState<Project[]>([])
   const [selectedProject, setSelectedProject] = useState<Project | null>(null) 
 
   const handleInfoArea = (tab: 'customization' | 'design' | 'web-development') => {
