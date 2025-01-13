@@ -13,6 +13,7 @@ import { Project } from "@/types/project";
 import { FAQ } from "@/types/faq";
 import { deleteFAQ, deleteFeedback, deleteProject, fetchFAQ, fetchFeedback, fetchProjects } from "@/services/api/api";
 import ModalAdmin from "@/Components/ModalAdmin";
+import Pagination from "@/Components/Pagination";
 
 const AdminPage = () => {
   const [selectedCategory, setSelectedCategory] = useState<"customization" | "design" | "web-development" | "FAQ" | "feedback">("customization");
@@ -30,6 +31,22 @@ const AdminPage = () => {
   const [modalData, setModalData] = useState<any>(null);
   const [modalType, setModalType] = useState<"project" | "faq" | "feedback">("project");
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
+
+  const totalPages = Math.ceil(feedbackList.length / itemsPerPage);
+
+  const currentPageData = feedbackList.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  const handlePageChange = (page: number) => {
+    if (page >= 1 && page <= totalPages) {
+      setCurrentPage(page);
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -224,19 +241,26 @@ const AdminPage = () => {
 
       {selectedCategory === "feedback" && (
         <div className={styles.wrapper_feedbacks}>
-          {feedbackList.length > 0 ? ( feedbackList.map((feedback) => (
-          <div key={feedback.id} className={styles.feedback}>
-            <h3>{feedback.firstName} {feedback.lastName}</h3>
-            <p>{feedback.content}</p>
-            <p>{new Date(feedback.createdAt).toLocaleDateString()}</p>
-            <div className={styles.buttons}>
-              <button onClick={() => handleEdit("feedback", feedback)}>Одобрить</button>
-              <button onClick={() => handleDeleteFeedback(feedback.id)}>Отклонить</button>
-            </div>
-          </div>
-        ))) : (
-          <p>Нет отзывов.</p>
-        )}
+          {currentPageData.length > 0 ? (
+            currentPageData.map((feedback) => (
+              <div key={feedback.id} className={styles.feedback}>
+                <h3>{feedback.firstName} {feedback.lastName}</h3>
+                <p>{feedback.content}</p>
+                <p>{new Date(feedback.createdAt).toLocaleDateString()}</p>
+                <div className={styles.buttons}>
+                  <button onClick={() => handleEdit("feedback", feedback)}>Одобрить</button>
+                  <button onClick={() => handleDeleteFeedback(feedback.id)}>Отклонить</button>
+                </div>
+              </div>
+            ))
+          ) : (
+            <p>Нет отзывов.</p>
+          )}
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+          />
         </div>
       )}
 

@@ -47,7 +47,7 @@
             &>select{
                 padding: 10px 0;
                 border-radius: 10px;
-                max-height: 150px; /* Ограничиваем высоту, например, 200px */
+                max-height: 150px;
                 overflow-y: auto; 
             }
           }
@@ -71,7 +71,6 @@
   .open {
     display: flex;
   }
-  
   
   .closeButton {
     position: absolute;

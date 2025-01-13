@@ -1,6 +1,6 @@
 .wrapper_plug{
     position: relative;
-    width: 100vw;
+    // width: 100vw;
     padding: 25px 0;
     background-color: #000;
     border-top: 3px solid white;
@@ -10,14 +10,20 @@
     box-sizing: border-box;
     text-align: center;
     z-index: 4;
-    @keyframes plug {
-        0% {
-          transform: translateX(0%);
-        }
-        100% {
-          transform: translateX(-100%);
-        }
-    }
+    // &>p{
+    //   display: inline-block;
+    //   white-space: nowrap;
+    //   animation: plug 10s linear infinite;
+    // }
+
+    // @keyframes plug {
+    //     0% {
+    //       transform: translateX(0%);
+    //     }
+    //     100% {
+    //       transform: translateX(-10%);
+    //     }
+    // }
 }
 
 @media (min-width: 320px) and (max-width: 424.9px) { //mobile 4 fr

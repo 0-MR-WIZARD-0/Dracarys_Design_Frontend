@@ -14,3 +14,7 @@ export const particle_1: string;
 export const particle_2: string;
 export const particle_3: string;
 export const particle_4: string;
+export const head_down: string;
+export const head_main: string;
+export const head_right: string;
+export const circle_background: string;

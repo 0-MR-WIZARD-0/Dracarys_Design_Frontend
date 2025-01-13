@@ -49,7 +49,7 @@ const ModalAdmin = ({ type, data, isOpen, onClose, onSave }: EditModalProps) => 
       };
 
       const response = await axios.patch(
-        `http://localhost:3001/reviews/${data.id}`, // используем ID из data
+        `http://localhost:3001/reviews/${data.id}`,
         updatedData,
         {
           headers: {

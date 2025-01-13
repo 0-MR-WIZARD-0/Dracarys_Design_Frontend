@@ -3,6 +3,7 @@
     grid-template-columns: repeat(12, 1fr);
     grid-gap: 0 20px;
     margin: 0 20px;
+    padding-bottom: 50px;
     &>div{
         display: flex;
         justify-content: center;
@@ -19,6 +20,7 @@
             transform: rotate(180deg);
         }
     }
+    
     .faq_questions{
         margin: 50px 0;
         grid-column: 2 / 12;
@@ -57,10 +59,9 @@
 @media (min-width: 425px) and (max-width: 767.9px) { //tablet 8 fr
     .wrapper_faq{
         grid-template-columns: repeat(8, 1fr);
-        &>div{
+        &>div:first-of-type{
             flex-direction: column;
             grid-column: 1 / 7;
-            grid-row: 1 / 2;
             position: relative;
             &>hr{
                 height: 2px;
@@ -75,6 +76,10 @@
                 writing-mode:inherit;
                 transform: rotate(0deg);
             }
+        }
+        &>div:last-of-type{
+            margin-top: 0px;
+            grid-column: 1 / 9;
         }
     .faq_questions{
         grid-column: 1 / 9;
@@ -91,10 +96,9 @@
 @media (min-width: 320px) and (max-width: 424.9px) { //mobile 4 fr
     .wrapper_faq{
         grid-template-columns: repeat(4, 1fr);
-        &>div{
+        &>div:first-of-type{
             flex-direction: column;
             grid-column: 1 / 5;
-            grid-row: 1 / 2;
             position: relative;
             &>hr{
                 height: 2px;
@@ -109,6 +113,11 @@
                 writing-mode:inherit;
                 transform: rotate(0deg);
             }
+        }
+        &>div:last-of-type{
+            display: flex;
+            flex-direction: row;
+            margin-top: 0px;
         }
         .faq_questions{
             grid-column: 1 / 5;

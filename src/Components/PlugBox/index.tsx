@@ -5,7 +5,7 @@ const PlugBox = () => {
     <section>
       <div className={styles.wrapper_plug}>
         <p>
-          Web-разработка Дизайн Кастомизация
+          Web-разработка Дизайн Кастомизация Web-разработка Дизайн Кастомизация Web-разработка Дизайн Кастомизация
         </p>
       </div>
     </section>

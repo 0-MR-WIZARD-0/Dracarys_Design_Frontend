@@ -38,9 +38,6 @@ $time-4: 600s;
         position: absolute;
         object-fit: cover;
     }
-    // .particle, .particle:after {
-    //     // background: transparent;
-    // }
     .particle:after {
         position: absolute;
         content: "";
@@ -96,6 +93,64 @@ $time-4: 600s;
         to   { transform: translateY($spacing * -1); }
     }
 
+    @keyframes moveLeft {
+        0% {
+            transform: translate(-120%, -5%) scale(0);
+          }
+          25% {
+            transform: translate(-90%, -5%) scale(0.25);
+          }
+          50% {
+            transform: translate(-60%, -5%) scale(0.5);
+          }
+          75% {
+            transform: translate(-30%, -5%) scale(0.75);
+          }
+          87% {
+            transform: translate(-20%, -5%) scale(0.75);
+          }
+          100% {
+            transform: translate(-3.8%, -5%) scale(1);
+          }
+    }
+  
+      @keyframes moveTop {
+        0% {
+            transform: translate(6%, -120%) scale(0);
+          }
+          25% {
+            transform: translate(3%, -90%) scale(0.25);
+          }
+          50% {
+            transform: translate(0%, -60%) scale(0.5);
+          }
+          75% {
+            transform: translate(-3%, -30%) scale(0.75);
+          }
+          100% {
+            transform: translate(-6%, -10%) scale(1);
+          }
+      }
+  
+      @keyframes moveRight {
+        0% {
+            transform: translate(120%, 6%) scale(0);
+          }
+          25% {
+            transform: translate(90%, 3%) scale(0.25);
+          }
+          50% {
+            transform: translate(60%, 0%) scale(0.5);
+          }
+          75% {
+            transform: translate(30%, -3%) scale(0.75);
+          }
+          100% {
+            transform: translate(-2%, -6%) scale(1);
+          }
+      }
+    
+
     .wrapper_header{
         display: grid;
         grid-template-columns: repeat(12, 1fr);
@@ -121,10 +176,63 @@ $time-4: 600s;
             grid-column: 5 / 12;
             border-radius: 50%;
             border: none;
-            background: radial-gradient(50% 50% at 50% 50%, rgba(255, 171, 0, 0.7) 0%, rgba(255, 144, 0, 0.7) 30.6%, rgba(255, 121, 0, 0.7) 45.6%, rgba(255, 92, 0, 0.7) 66.1%, rgba(255, 0, 0, 0.7) 100%);
-            filter: blur(8px);
+            position: relative;
             top: 120px;
             z-index: 3;
+            &>.circle_background {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: radial-gradient(50% 50% at 50% 50%, rgba(255, 171, 0, 0.7) 0%, rgba(255, 144, 0, 0.7) 30.6%, rgba(255, 121, 0, 0.7) 45.6%, rgba(255, 92, 0, 0.7) 66.1%, rgba(255, 0, 0, 0.7) 100%);
+                filter: blur(8px);
+                z-index: -1;
+                border-radius: inherit;
+            }
+            &>.head_down, .head_main, .head_right {
+                position: absolute;
+                background-repeat: no-repeat;
+                filter: none;
+            }
+            &>.head_down {
+                top: -6%;
+                width: 100%;
+                height: 100%;
+                transform: translate(-2%);
+                animation: moveRight 8s linear;
+                &>img{
+                    object-fit: contain;
+                    height: 100%;
+                    width: 100%;
+                }
+              }
+        
+              &>.head_main {
+                top: -10%;
+                width: 100%;
+                height: 100%;
+                animation: moveTop 8s linear;
+                transform: translate(-6%);
+                &>img{
+                    object-fit: contain;
+                    height: 100%;
+                    width: 100%;
+                }
+              }
+        
+              &>.head_right {
+                width: 100%;
+                height: 100%;
+                top: -5%;
+                transform: translate(-3.8%);
+                animation: moveLeft 8s linear ;
+                &>img{
+                    object-fit: contain;
+                    height: 100%;
+                    width: 100%;
+                }
+              }
         }
         .circle_large{
             grid-row: 1 / 3;
@@ -133,7 +241,8 @@ $time-4: 600s;
             border: none;
             background: radial-gradient(50% 50% at 50% 50%, #000000 0%, #D04223 100%);
             filter: blur(500px);
-        }
+          }
+
         &>nav{
             margin-top: 120px;
             z-index: 4;
@@ -145,10 +254,6 @@ $time-4: 600s;
                 flex-direction: column;
                 align-items: end;
             }
-            // &>ul>hr{
-            //     position: absolute;
-            //     height: 2px;
-            // }
             &>ul>li
             {
                 cursor: pointer;
@@ -192,6 +297,7 @@ $time-4: 600s;
         .plug_text{
             grid-row: 3 / 4;
             grid-column: 1 / 7;
+            z-index: 4;
             margin-bottom: 100px;
             position: relative;
             &>hr{
